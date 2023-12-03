@@ -1,0 +1,18 @@
+.main{
+    width: 100%;
+}
+
+.DataFilter{
+    width: 100%;
+    background-color: var(--mainBackgroundColor);
+    box-shadow: var(--mainBoxShadown);
+    border-radius: var(--border-radius);
+    height: 64px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}

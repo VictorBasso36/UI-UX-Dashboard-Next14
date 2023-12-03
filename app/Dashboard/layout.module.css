@@ -1,0 +1,31 @@
+
+.main {
+    display: grid;
+    grid-template-columns: 270px 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+
+}
+
+.contentItem{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.contentContainer{
+    width: 95%;
+    max-width: var(--max-width);
+}
+
+@media screen and (min-width: 0px) and (max-width: 1150px){
+    .main{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+    }
+}

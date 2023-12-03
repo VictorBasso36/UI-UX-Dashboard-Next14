@@ -1,0 +1,16 @@
+.main{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+
+}
+
+.main p{
+    font-size: 12pt;
+    color: var(--textColor);
+}
+
+.main p span{
+    font-weight: bold;
+    color: rgb(57 0 255 / 78%);
+}

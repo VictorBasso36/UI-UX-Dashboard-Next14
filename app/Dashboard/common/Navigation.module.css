@@ -1,0 +1,117 @@
+.main{
+    overflow: hidden;
+    width: 260px;
+    display: flex;
+    padding-left: 10px;
+    align-items: flex-start;
+    justify-content: center;    
+    background-color: var(--mainBackgroundColor);
+    box-shadow: var(--mainBoxShadown);
+    overflow-y: scroll;
+    height: 100vh;
+    transition: all 300ms ease-in-out;
+    
+}
+.contentItem{
+    width: 95%;
+    position: relative;
+}
+
+
+
+.headerNavbar{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.mainLogo{
+    width: 90%;
+    height: unset;
+}
+
+
+
+
+
+.ItemContainerSelected{
+    background-color: var(--mainColor);
+    box-shadow: var(--mainBoxShadown);
+    transition: all 0.8ms ease-in-out;
+    position: relative;
+}
+
+.ItemContainerSelected p{
+    font-weight: 500;
+}
+
+
+.ItemContainer{
+    width: 100%;
+    display: flex;
+    border-radius: var(--border-radius);
+    padding:8px 20px;
+}
+
+.ItemContainer:hover{
+    background-color: var(--mainHover);
+}
+
+.ItemContainer p{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    text-align: left;
+}
+
+.ItemContainer svg{
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.CloseItem{
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 20px;
+    margin-right: 0px;
+
+}
+
+.CloseItem svg{
+    width: 25px;
+    height: 25px;
+}
+@media screen and (min-width: 0px) and (max-width: 1150px){
+    .CloseItem{
+        display: flex;
+    }
+
+    .headerNavbar{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 50px;
+        margin-bottom: 40px;
+    }
+
+    .main{
+        overflow: hidden;
+        width: 260px;
+        display: flex;
+        padding-left: 10px;
+        align-items: flex-start;
+        justify-content: center;    
+        background-color: var(--mainBackgroundColor);
+        box-shadow: var(--mainBoxShadown);
+        overflow-y: scroll;
+        height: 100vh;
+        position: absolute;
+    }   
+}
