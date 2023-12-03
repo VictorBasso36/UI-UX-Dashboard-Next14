@@ -37,6 +37,7 @@ export default function Navigation() {
 
 const icons = [
     <svg
+    key={0}
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
     height="1em"
@@ -55,6 +56,7 @@ const icons = [
     ></path>
   </svg>,
     <svg
+      key={1}
       xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
