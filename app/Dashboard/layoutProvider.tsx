@@ -34,7 +34,7 @@ export function DashboardProvider({ children }: OpenProviderProps) {
     const [screenWidth, setScreenWidth] = useState<number>(window?.innerWidth || 0);
     useEffect(() => {
         const handleResize = () => {
-            const newScreenWidth = window.innerWidth;
+            const newScreenWidth = window.innerWidth || 0;
             setScreenWidth(newScreenWidth);
 
             if (newScreenWidth > 1150) {
@@ -45,11 +45,11 @@ export function DashboardProvider({ children }: OpenProviderProps) {
         };
 
         // Adiciona o ouvinte de evento durante a montagem do componente
-        window.addEventListener('resize', handleResize);
+        window?.addEventListener('resize', handleResize);
 
         // Remove o ouvinte de evento quando o componente for desmontado
         return () => {
-            window.removeEventListener('resize', handleResize);
+            window?.removeEventListener('resize', handleResize);
         };
     }, [screenWidth]);
     return (
