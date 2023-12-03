@@ -15,7 +15,7 @@ interface OpenContextType {
 }
   
 const OpenContext = createContext<OpenContextType>({
-    open: false,
+    open: true,
     setOpen: () => {},
     openSearch: false,
     setOpenSearch: () => {},
@@ -24,7 +24,7 @@ const OpenContext = createContext<OpenContextType>({
 export function DashboardProvider({ children }: OpenProviderProps) {
 
     //NavigationProvider
-    const [open, setOpen] = useState<boolean>(false)
+    const [open, setOpen] = useState<boolean>(true)
     //SearchBarProvider
     const[openSearch, setOpenSearch] = useState<boolean>(false)
 
