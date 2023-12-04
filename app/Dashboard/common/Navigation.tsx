@@ -4,10 +4,22 @@ import styles from './Navigation.module.css'
 import Link from 'next/link'
 import { usePathname  } from 'next/navigation'
 import { DashboardContext } from '../layoutProvider'
+import { useEffect, useState } from 'react'
 
 export default function Navigation() {
   const searchParams = usePathname()
   const {open, setOpen} = DashboardContext()
+
+
+
+  useEffect(()=>{
+    if (typeof window !== 'undefined') {
+      let width = window.innerWidth;
+      if(width < 1150){
+        setOpen(false);
+      }
+    }
+  },[])
 
   return (
     <main className={styles.main} style={{marginLeft: open ? '0px' : '-260px'}}>

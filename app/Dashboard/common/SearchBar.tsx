@@ -1,7 +1,5 @@
 "use client"
-import Image from 'next/image'
 import styles from './SearchBar.module.css'
-import Link from 'next/link'
 import { DashboardContext } from '../layoutProvider'
 
 export default function SearchBar() {

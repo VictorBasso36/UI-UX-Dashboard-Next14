@@ -27,38 +27,6 @@ export function DashboardProvider({ children }: OpenProviderProps) {
     const [open, setOpen] = useState<boolean>(true)
     //SearchBarProvider
     const[openSearch, setOpenSearch] = useState<boolean>(false)
-
-
-
-    // pageWidth
-    const [screenWidth, setScreenWidth] = useState<number>(0);
-
-    useEffect(() => {
-        const handleResize = () => {
-            if (typeof window !== 'undefined') {
-                const newScreenWidth = window.innerWidth || 0;
-                setScreenWidth(newScreenWidth);
-    
-                if (newScreenWidth > 1150) {
-                    setOpen(true);
-                } else {
-                    setOpen(false);
-                }
-            }
-        };
-    
-        // Adiciona o ouvinte de evento durante a montagem do componente
-        if (typeof window !== 'undefined') {
-            window.addEventListener('resize', handleResize);
-        }
-    
-        // Remove o ouvinte de evento quando o componente for desmontado
-        return () => {
-            if (typeof window !== 'undefined') {
-                window.removeEventListener('resize', handleResize);
-            }
-        };
-    }, [screenWidth]);
     
     return (
         <OpenContext.Provider 
