@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Public_Sans } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+import { ConfigProvider } from 'antd'
+
+const public_sans = Public_Sans({ subsets: ['latin'],weight: ['100', '200', '300','400', '500', '600', '700', '800', '900'], variable: '--Public_Sans' })
 
 export const metadata: Metadata = {
   title: 'Dashboard Taxi Digital - A evolução do táxi.',
@@ -18,8 +20,21 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+
+    <ConfigProvider
+      theme={{
+        token: {
+
+          colorPrimary: '#fbdc00',
+          fontFamily: 'var(--Public_Sans)'
+          
+        },
+      }}
+    >
+      <html lang="en">
+        <body className={public_sans.className}>{children}</body>
+      </html>
+    </ConfigProvider>
+
   )
 }

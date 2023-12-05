@@ -12,7 +12,166 @@
     padding-right: 20px;
     margin-top: 20px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     margin-bottom: 30px;
+}
+
+
+.startDate{
+    min-width: 280px;
+    margin-right: 20px;
+}
+
+
+.endDate{
+    min-width: 280px;
+}
+
+.ChartsHere{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.chartBg{
+    background-color: var(--mainBackgroundColor);
+    box-shadow: var(--mainBoxShadown);
+    height: 500px;
+    border-radius: var(--border-radius);
+}
+
+
+.grid1{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    margin-bottom: 30px;
+
+}
+
+.grid2{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    margin-bottom: 30px;
+}
+
+.grid3{
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    margin-bottom: 30px;
+}
+
+.grid4{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    margin-bottom: 30px;
+}
+
+
+
+@media screen and (max-width: 1150px){
+    .startDate{
+        margin-right: 0px;
+        margin-bottom: 20px;
+    }
+
+    .DataFilter{
+        width: 100%;
+        background-color: var(--mainBackgroundColor);
+        box-shadow: var(--mainBoxShadown);
+        border-radius: var(--border-radius);
+        height: unset;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .ChartsHere{
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: unsetr;
+        grid-template-rows: unset;
+        grid-column-gap: unset;
+        grid-row-gap: unset;
+    }
+
+    
+    .grid1{
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: unset;
+        grid-template-rows: unset;
+        grid-column-gap: unset;
+        grid-row-gap: unset;
+        margin-bottom: 30px;
+
+    }
+
+    .grid1 .chartBg:last-child{
+        margin-top: 30px;
+    }
+
+    .grid2{
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: unset;
+        grid-template-rows: unset;
+        grid-column-gap: unset;
+        grid-row-gap: unset;
+        margin-bottom: 30px;
+    }
+
+    .grid2 .chartBg:last-child{
+        margin-top: 30px;
+    }
+
+    .grid3{
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: unset;
+        grid-template-rows: unset;
+        grid-column-gap: unset;
+        grid-row-gap: unset;
+        margin-bottom: 30px;
+    }
+
+    .grid3 .chartBg:last-child{
+        margin-top: 30px;
+    }
+
+    .grid4{
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: unset;
+        grid-template-rows: unset;
+        grid-column-gap: unset;
+        grid-row-gap: unset;
+        margin-bottom: 30px;
+    }
+
+    .grid4 .chartBg:last-child{
+        margin-top: 30px;
+    }
 }

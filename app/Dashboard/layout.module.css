@@ -5,11 +5,14 @@
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+    
 
 }
 
 .contentItem{
     width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
     display: flex;
     align-items: flex-start;
     justify-content: center;
