@@ -31,7 +31,8 @@ export default function RootLayout({
         },
       }}
     >
-      <html lang="en">
+      <html lang="pt-br">
+        <meta name="viewport" content="minimum-scale=1, initial-scale=1" />
         <body className={public_sans.className}>{children}</body>
       </html>
     </ConfigProvider>

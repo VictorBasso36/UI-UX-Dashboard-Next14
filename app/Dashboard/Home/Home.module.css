@@ -40,8 +40,14 @@
 .chartBg{
     background-color: var(--mainBackgroundColor);
     box-shadow: var(--mainBoxShadown);
-    height: 500px;
+    height: auto;
+    min-height: 500px;
     border-radius: var(--border-radius);
+}
+
+.cotainerTitle{
+
+   padding: 30px;
 }
 
 
