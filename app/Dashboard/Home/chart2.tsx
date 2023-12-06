@@ -23,7 +23,7 @@ import { Line } from '@ant-design/charts';
 //   BarElement
 // );
 
-export default function Chart1() {
+export default function Chart2() {
   const { start, end } = DashboardContext();
   const data = [
     { year: '1991', value: 3 },
@@ -48,5 +48,5 @@ export default function Chart1() {
       shape: 'diamond',
     },
   };
-  return <Line {...config} />
+  return <Line {...config} />;
 }
