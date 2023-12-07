@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { DashboardContext } from '../layoutProvider';
 import styles from './Home.module.css';
 import dayjs from 'dayjs';
-import { Column, Line } from '@ant-design/charts';
+import { Column, Line, ColumnConfig } from '@ant-design/charts';
 import { Col } from 'antd';
 // import {
 //   Chart as ChartJS,
@@ -26,71 +26,91 @@ import { Col } from 'antd';
 
 export default function Chart3() {
   const { start, end } = DashboardContext();
+  const annotations = [];
   const data = [
     {
-      type: '家具家电',
+      type: 'Ligue taxi-1',
       sales: 38,
     },
     {
-      type: '粮油副食',
+      type: 'Ligue taxi-2',
       sales: 52,
     },
     {
-      type: '生鲜水果',
+      type: 'Ligue taxi-3',
       sales: 61,
     },
     {
-      type: '美容洗护',
+      type: 'Ligue taxi-4',
       sales: 145,
     },
     {
-      type: '母婴用品',
+      type: 'Ligue taxi-5',
       sales: 48,
     },
     {
-      type: '进口食品',
+      type: 'Ligue taxi-6',
       sales: 38,
     },
     {
-      type: '食品饮料',
+      type: 'Ligue taxi-7',
       sales: 38,
     },
     {
-      type: '家庭清洁',
+      type: 'Ligue taxi-8',
       sales: 38,
     },
   ];
-  const config: any = {
+  
+  const config: ColumnConfig = {
     data,
+    
     xField: 'type',
     yField: 'sales',
     padding: [50],
+    columnStyle: {
+      radius: [12, 12, 0, 0],
+    
+
+    },
     label: {
-      // 可手动配置 label 数据标签位置
-      position: 'middle',
-      // 'top', 'bottom', 'middle',
-      // 配置样式
+      position: 'top',
+      //rotate: -340,
       style: {
-        width: '100%',
-        fill: '#FFFFFF',
-        opacity: 0.6,
-        padding: 20
+        fontSize: 20,
+        
       },
+      content: ({ sales }) => `${sales}k`,
     },
     xAxis: {
+      grid: null,
       label: {
         autoHide: true,
         autoRotate: false,
+        //rotate: 320,
+       
       },
+     
     },
+    yAxis: {
+      grid: null,
+     
+
+    },
+    legend: false,
     meta: {
       type: {
-        alias: '类别',
+        alias: 'sales',
       },
       sales: {
-        alias: '销售额',
+        alias: 'Ligue Táxi',
       },
     },
+    minColumnWidth: 20,
+    maxColumnWidth: 40,
+    seriesField: 'type',
+    color:['#e9e7fd','#7367f0'],
+    
   };
   return <Column {...config} />;
  
