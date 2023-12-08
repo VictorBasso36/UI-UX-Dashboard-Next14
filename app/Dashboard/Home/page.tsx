@@ -67,7 +67,7 @@ export default function Home() {
             <h1>Tempo de atendimento por ticket</h1>
             </div>
             <div>
-              <Chart1 />
+        
             </div>
           </div>
           <div className={styles.chartBg}>
@@ -76,7 +76,7 @@ export default function Home() {
               <p>Veja os tickets e seus status</p>
             </div>
             <div>
-              <Chart1 />
+    
             </div>
           </div>
         </div>
@@ -86,7 +86,7 @@ export default function Home() {
             <h1>Tickets por analista</h1>
             </div>
             <div>
-              <Chart1 />
+           
             </div>
           </div>
           <div className={styles.chartBg}>
@@ -94,7 +94,7 @@ export default function Home() {
             <h1>Tickets por analista</h1>
             </div>
             <div>
-              <Chart1 />
+      
             </div>
           </div>
         </div>
