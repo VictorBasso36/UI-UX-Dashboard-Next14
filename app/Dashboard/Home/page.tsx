@@ -6,7 +6,12 @@ const { RangePicker } = DatePicker;
 import dayjs from 'dayjs';
 import ptBR from 'antd/lib/locale/pt_BR'
 import Chart1 from './chart1';
-import Chart2 from './chart2';
+
+import dynamic from 'next/dynamic'
+const Chart2 = dynamic(
+  () => import('./chart2'),
+  { ssr: false }
+)
 import Chart3 from './chart3';
 
 export default function Home() {

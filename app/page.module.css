@@ -1,0 +1,47 @@
+.main{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F8F7FA;
+}
+
+.contentItem{
+    text-align: center;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.mainButton{
+    width: 250px;
+    cursor: pointer;
+    box-shadow: var(--mainBoxShadown);
+    height: 40px;
+    background-color: var(--mainColor);
+    border: none;
+    border-radius: var(--border-radius);
+    margin-top: 30px;
+    transition: all 500ms ease-in-out;
+}
+
+.mainButton:hover{
+    opacity: 0.6;
+}
+
+.mainButton p{
+    color: white;
+    font-weight: bolder;
+    font-size: 18pt;
+}
+
+.description{
+    max-width: 350px;
+    margin-top: 40px;
+    font-weight: bold;
+    text-align: center;
+}
+
