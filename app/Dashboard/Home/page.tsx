@@ -60,7 +60,7 @@ export default function Home() {
             <h1>Chamados por cliente</h1>
               <p>Você pode ver os chamados por cliente e por dia</p>
             </div>
-            <div>
+            <div className={styles.chart3div}>
               <Chart3 />
             </div>
             

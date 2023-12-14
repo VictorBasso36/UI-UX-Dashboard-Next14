@@ -4,6 +4,11 @@ import styles from './Home.module.css';
 import dayjs from 'dayjs';
 import { Column, Line, ColumnConfig } from '@ant-design/charts';
 import { Col } from 'antd';
+import ReactApexChart from "react-apexcharts";
+import { ApexOptions } from "apexcharts";
+import { withTheme } from '@emotion/react';
+
+
 // import {
 //   Chart as ChartJS,
 //   CategoryScale,
@@ -61,58 +66,135 @@ export default function Chart3() {
       sales: 38,
     },
   ];
-  
-  const config: ColumnConfig = {
-    data,
-    
-    xField: 'type',
-    yField: 'sales',
-    padding: [50],
-    columnStyle: {
-      radius: [12, 12, 0, 0],
-    
 
-    },
-    label: {
-      position: 'top',
-      //rotate: -340,
-      style: {
-        fontSize: 20,
+  const options: ApexOptions = {
+
+        
+      series: [{
+        name: 'Chamados por cliente',
+        data: [2, 3, 4, 10, 4, 33, 3, 2, 1, 3, 20, 10]
+      }],
+      grid: {
+        show: false
+      },
+      chart: {
+        toolbar: {
+          show: false
+        },
+        
+        width: '100%',
+        height: '100%',
+        type: 'bar',
+      },
+      plotOptions: {
+        bar: {
+          // columnWidth: 40,
+          borderRadius: 10,
+          borderRadiusApplication: 'end',
+          dataLabels: {
+            position: 'top', // top, center, bottom
+          },
+        }
+      },
+      
+      dataLabels: {
+        enabled: true,
+        formatter: function (val) {
+          return val + "k";
+        },
+        offsetY: -30,
+        style: {
+          fontSize: '15pt',
+          fontFamily: 'var(--Public_Sans)!important',
+          colors: ["#5d596c"]
+        }
         
       },
-      content: ({ sales }) => `${sales}k`,
-    },
-    xAxis: {
-      grid: null,
-      label: {
-        autoHide: true,
-        autoRotate: false,
-        //rotate: 320,
-       
-      },
-     
-    },
-    yAxis: {
-      grid: null,
-     
-
-    },
-    legend: false,
-    meta: {
-      type: {
-        alias: 'sales',
-      },
-      sales: {
-        alias: 'Ligue Táxi',
-      },
-    },
-    minColumnWidth: 20,
-    maxColumnWidth: 40,
-    seriesField: 'type',
-    color:['#e9e7fd','#7367f0'],
-    
-  };
-  return <Column {...config} />;
  
+      colors:['#7367f0'],
+      xaxis: {
+        
+        categories: ["Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi"],
+        position: 'left',
+        axisBorder: {
+          show: true
+        },
+        labels: {
+          rotate: -45,
+          style: {
+            fontSize: '10pt',
+            cssClass: '.labelMainChart3',
+            fontFamily: 'var(--Public_Sans)!important',
+            colors: ["#5d596c"]},
+            rotateAlways: false,
+        },
+        axisTicks: {
+          show: false
+        },
+        crosshairs: {
+          fill: {
+            type: 'gradient',
+            gradient: {
+              colorFrom: '#D8E3F0',
+              colorTo: '#BED1E6',
+              stops: [0, 100],
+              opacityFrom: 0.4,
+              opacityTo: 0.5,
+            }
+          }
+        },
+        
+        tooltip: {
+          enabled: false,
+        }
+      },
+      
+      yaxis: {
+        axisBorder: {
+          show: false
+        },
+    
+        labels: {
+          style:{
+            fontSize: '15pt',
+            fontFamily: 'var(--Public_Sans)!important',
+            colors: ["#5d596c"]
+          },
+          show: true,
+          formatter: function (val) {
+            return val + "k";
+          }
+        }
+      
+      },
+      
+      title: {
+        text: '',
+        floating: true,
+        offsetY: 330,
+        align: 'center',
+        style: {
+          color: '#444'
+        }
+      }
+    }
+  
+  
+  
+      
+    
+   
+
+  return ( 
+  
+    <div style={{width: '100%', marginLeft: '20px', marginRight: '20px', display: 'fkex', alignItems: 'center', justifyContent: 'center'}}>
+      <ReactApexChart
+          options={options}
+          series={options.series}
+          type="bar"
+          height={350}
+          />
+    </div>
+  )
   
 }
