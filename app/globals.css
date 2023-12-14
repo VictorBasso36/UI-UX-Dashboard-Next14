@@ -76,3 +76,11 @@ a {
     border-radius: 9px;
     border: 0px solid ar(--mainBackgroundColor);
   }
+
+  svg g{
+    font-family: var(--Public_Sans)!important;
+  }
+
+  .labelMainChart3{
+    transform: rotate(-45);
+  }
