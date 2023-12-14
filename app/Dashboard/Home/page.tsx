@@ -12,7 +12,10 @@ const Chart2 = dynamic(
   () => import('./chart2'),
   { ssr: false }
 )
-import Chart3 from './chart3';
+
+const Chart3 = dynamic(() => import('./chart3'),
+{ ssr: false }
+)
 
 export default function Home() {
 
