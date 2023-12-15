@@ -5,9 +5,12 @@ import { DatePicker, DatePickerProps, Space } from 'antd';
 const { RangePicker } = DatePicker;
 import dayjs from 'dayjs';
 import ptBR from 'antd/lib/locale/pt_BR'
-import Chart1 from './chart1';
-
 import dynamic from 'next/dynamic'
+
+const Chart1 = dynamic(
+  () => import('./chart1'),
+  { ssr: false }
+)
 const Chart2 = dynamic(
   () => import('./chart2'),
   { ssr: false }
@@ -43,7 +46,7 @@ export default function Home() {
             <h1>Atendimento por período</h1>
               <p>Chamados Help Desk</p>
             </div>
-            <div>
+            <div className={styles.chart1div}>
               <Chart1 />
             </div>
           </div>

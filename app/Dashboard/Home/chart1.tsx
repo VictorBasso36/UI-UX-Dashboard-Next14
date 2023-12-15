@@ -1,3 +1,4 @@
+"use client"
 import React, { useContext } from 'react';
 import { DashboardContext } from '../layoutProvider';
 import styles from './chart1.module.css';
@@ -25,6 +26,8 @@ import { Line, Pie, PieConfig } from '@ant-design/charts';
 
 export default function Chart1() {
   const { start, end } = DashboardContext();
+  const windowWidth = window.innerWidth;
+  const chartSize = windowWidth < 600 ? 180 : 250;
   const data = [
     {
       type: 'Telefone',
@@ -38,6 +41,8 @@ export default function Chart1() {
   const config: PieConfig = {
     appendPadding: 10,
     data,
+    width: chartSize,
+    height: chartSize,
     angleField: 'value',
     colorField: 'type',
     radius: 1,

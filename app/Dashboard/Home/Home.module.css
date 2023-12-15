@@ -46,7 +46,7 @@
 }
 
 .cotainerTitle{
-
+    width: 100%;
    padding: 30px;
 }
 
@@ -61,18 +61,15 @@
 
 }
 
+.chart1div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .grid2{
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    grid-column-gap: 30px;
-    grid-row-gap: 30px;
-    margin-bottom: 30px;
-}
-
-.grid3{
-    display: grid;
-    grid-template-columns: 1.4fr 1fr;
     grid-template-rows: 1fr;
     grid-column-gap: 30px;
     grid-row-gap: 30px;
@@ -85,6 +82,24 @@
     justify-content: center;
     width: 100%;
 }
+
+.grid2 .chartBg{
+    display: flex;
+    text-align: left;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid3{
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    margin-bottom: 30px;
+}
+
 
 .grid4{
     display: grid;
