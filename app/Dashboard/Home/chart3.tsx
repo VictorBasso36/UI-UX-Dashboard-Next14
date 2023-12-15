@@ -83,7 +83,7 @@ export default function Chart3() {
         },
         
         width: '100%',
-        height: '100%',
+        height: '400px',
         type: 'bar',
       },
       plotOptions: {
@@ -187,7 +187,7 @@ export default function Chart3() {
 
   return ( 
   
-    <div style={{width: '100%', marginLeft: '20px', marginRight: '20px', display: 'fkex', alignItems: 'center', justifyContent: 'center'}}>
+    <div style={{width: '100%', marginLeft: '20px', marginRight: '20px', }}>
       <ReactApexChart
           options={options}
           series={options.series}

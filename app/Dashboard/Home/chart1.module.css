@@ -2,24 +2,32 @@
     margin-left: 30px;
     margin-right: 30px;
     margin-bottom: 30px;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
 }
 
+.grid{
+    width: 45%;
+}
+
 .grid h2{
-    font-size: 40pt;
+    font-size: 35pt;
 }
 .grid:nth-child(1) p{
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .chartHere{
     display: flex;
+    width: 100%;
+    max-width: 250px;
     align-items: center;
     justify-content: center;
 }
+
 
 .contentDataIcon{
     display: flex;
@@ -43,8 +51,16 @@
     width: 80%;
 }
 
-@media screen and (min-width:0px) and (max-width: 1150px){
+@media screen and (min-width:0px) and (max-width: 950px){
     .chartHere{
         width: 100%;
+    }
+
+    .chartHere{
+        display: flex;
+
+        width: 100%;
+        align-items: center;
+        justify-content: center;
     }
 }

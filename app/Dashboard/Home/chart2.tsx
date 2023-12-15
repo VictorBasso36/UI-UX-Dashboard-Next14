@@ -12,7 +12,7 @@ import dynamic from 'next/dynamic';
 export default function Chart2() {
   const { start, end } = DashboardContext();
   const options: ApexOptions = {
-    series: [14, 23, 21, 17, 15, 10, 12, 17, 21],
+              series: [14, 23, 21, 17, 15, 10, 12, 17, 21],
    
               chart: {
                 type: 'polarArea',
@@ -23,6 +23,34 @@ export default function Chart2() {
               fill: {
                 opacity: 0.8
               },
+              grid: {
+                show: false
+              },
+              yaxis: {
+                axisBorder: {
+                  show: false
+                },
+              },
+              legend: {
+                horizontalAlign: 'center', 
+                fontSize: '15pt',
+                fontFamily: 'var(--Public_Sans)!important',
+                itemMargin: {
+                  horizontal: 20,
+                },
+                markers: {
+                  width: 10,
+                  height: 10,
+                  strokeWidth: 0,
+                  strokeColor: '#fff',
+                  fillColors: undefined,
+                  radius: 12,
+                  customHTML: undefined,
+                  onClick: undefined,
+                  offsetX: 0,
+                  offsetY: 0
+                },
+              },
               responsive: [{
                 breakpoint: 480,
                 options: {
@@ -30,6 +58,19 @@ export default function Chart2() {
                     width: 200
                   },
                   legend: {
+                    horizontalAlign: 'center', 
+                    markers: {
+                      width: 10,
+                      height: 10,
+                      strokeWidth: 0,
+                      strokeColor: '#fff',
+                      fillColors: undefined,
+                      radius: 12,
+                      customHTML: undefined,
+                      onClick: undefined,
+                      offsetX: 0,
+                      offsetY: 0
+                    },
                     position: 'bottom'
                   }
                 }
