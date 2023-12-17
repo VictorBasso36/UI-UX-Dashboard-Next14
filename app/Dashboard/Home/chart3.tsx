@@ -83,7 +83,7 @@ export default function Chart3() {
         },
         
         width: '100%',
-        height: '400px',
+        height: '300px',
         type: 'bar',
       },
       plotOptions: {
@@ -176,7 +176,115 @@ export default function Chart3() {
         style: {
           color: '#444'
         }
-      }
+      },
+      responsive: [{
+        breakpoint: 700,
+        options: {
+          grid: {
+            show: false
+          },
+          chart: {
+            toolbar: {
+              show: false
+            },
+            
+            width: '100%',
+            height: '300px',
+            type: 'bar',
+          },
+          plotOptions: {
+            bar: {
+              // columnWidth: 40,
+              borderRadius: 10,
+              borderRadiusApplication: 'end',
+              dataLabels: {
+                position: 'top', // top, center, bottom
+              },
+            }
+          },
+          
+          dataLabels: {
+            enabled: true,
+            formatter: function (val: string) {
+              return val + "k";
+            },
+            offsetY: -30,
+            style: {
+              fontSize: '8pt',
+              fontFamily: 'var(--Public_Sans)!important',
+              colors: ["#5d596c"]
+            }
+            
+          },
+     
+          colors:['#7367f0'],
+          xaxis: {
+            
+            categories: ["Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi"],
+            position: 'left',
+            axisBorder: {
+              show: true
+            },
+            labels: {
+              rotate: -45,
+              style: {
+                fontSize: '10pt',
+                cssClass: '.labelMainChart3',
+                fontFamily: 'var(--Public_Sans)!important',
+                colors: ["#5d596c"]},
+                rotateAlways: false,
+            },
+            axisTicks: {
+              show: false
+            },
+            crosshairs: {
+              fill: {
+                type: 'gradient',
+                gradient: {
+                  colorFrom: '#D8E3F0',
+                  colorTo: '#BED1E6',
+                  stops: [0, 100],
+                  opacityFrom: 0.4,
+                  opacityTo: 0.5,
+                }
+              }
+            },
+            
+            tooltip: {
+              enabled: false,
+            }
+          },
+          
+          yaxis: {
+            axisBorder: {
+              show: false
+            },
+        
+            labels: {
+              style:{
+                fontSize: '10pt',
+                fontFamily: 'var(--Public_Sans)!important',
+                colors: ["#5d596c"]
+              },
+              show: true,
+              formatter: function (val: string) {
+                return val + "k";
+              }
+            }
+          
+          },
+          
+          title: {
+            text: '',
+            floating: true,
+            offsetY: 330,
+            align: 'center',
+            style: {
+              color: '#444'
+            }
+          },
+        }
+      }]
     }
   
   
