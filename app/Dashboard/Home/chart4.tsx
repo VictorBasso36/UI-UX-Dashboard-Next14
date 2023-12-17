@@ -29,24 +29,31 @@ import { withTheme } from '@emotion/react';
 //   BarElement
 // );
 
-export default function Chart7() {
+export default function Chart4() {
   const { start, end } = DashboardContext();
   const annotations = [];
 
   const options: ApexOptions = {
 
-        
     series: [{
-        name: 'Abertos',
-        data: [44, 55, 57]
+        name: 'Leo',
+        data: [44]
       }, 
       {
-        name: 'Fechados',
-        data: [76, 85, 101]
+        name: 'Victor',
+        data: [76]
       }, 
       {
-        name: 'Pendentes',
-        data: [35, 41, 36]
+        name: 'Rodrigão',
+        data: [35]
+      },
+      {
+        name: 'Gui',
+        data: [35]
+      },
+      {
+        name: 'Felipe',
+        data: [35]
       }],
       grid: {
         show: true,
@@ -89,7 +96,7 @@ export default function Chart7() {
       colors:['#7367f0', '#28c76f', '#ff9f43', '#00cfe8', '#5d596c'],
       xaxis: {
         
-        categories: ["Iago", "Leo", "Gui"],
+        categories: ["Horas"],
         position: 'left',
         axisBorder: {
           show: true
@@ -137,56 +144,12 @@ export default function Chart7() {
           },
           show: true,
           formatter: function (val) {
-            return val + "";
+            return val + "H";
           }
         }
       
       },
-      responsive: [{
-        breakpoint: 550,
-        options: {
-          dataLabels: {
-            enabled: false,
-            formatter: function (val: string) {
-              return val + "k";
-            },
-            offsetY: -30,
-            style: {
-              fontSize: '5pt',
-              fontFamily: 'var(--Public_Sans)!important',
-              colors: ["#5d596c"]
-            }
-            
-          },
-          labels: {
-            rotate: -45,
-            style: {
-              fontSize: '6pt',
-              cssClass: '.labelMainChart3',
-              fontFamily: 'var(--Public_Sans)!important',
-              colors: ["#5d596c"]},
-              rotateAlways: false,
-          },
-        },
-
-      }], 
-      title: {
-        text: '',
-        floating: true,
-        offsetY: 330,
-        align: 'center',
-        style: {
-          color: '#444'
-        }
-      },
-    
     }
-  
-  
-  
-      
-    
-   
 
   return ( 
   

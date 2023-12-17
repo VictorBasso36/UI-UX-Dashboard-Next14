@@ -226,7 +226,7 @@ export default function Chart3() {
               show: true
             },
             labels: {
-              rotate: -45,
+              rotate: -90,
               style: {
                 fontSize: '10pt',
                 cssClass: '.labelMainChart3',
@@ -262,7 +262,7 @@ export default function Chart3() {
         
             labels: {
               style:{
-                fontSize: '10pt',
+                fontSize: '6pt',
                 fontFamily: 'var(--Public_Sans)!important',
                 colors: ["#5d596c"]
               },
@@ -292,17 +292,17 @@ export default function Chart3() {
       
     
    
-
+    const isMobile = window.innerWidth < 550;
   return ( 
   
-    <div style={{width: '100%', marginLeft: '20px', marginRight: '20px', }}>
-      <ReactApexChart
-          options={options}
-          series={options.series}
-          type="bar"
-          height={350}
-          />
-    </div>
+    <div style={isMobile ? {} : { width: '100%', marginLeft: '20px', marginRight: '20px' }}>
+    <ReactApexChart
+      options={options}
+      series={options.series}
+      type="bar"
+      height={350}
+    />
+  </div>
   )
   
 }

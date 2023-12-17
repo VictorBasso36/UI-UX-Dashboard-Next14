@@ -20,6 +20,11 @@ const Chart3 = dynamic(() => import('./chart3'),
 { ssr: false }
 )
 
+const Chart4 = dynamic(() => import('./chart4'),
+{ ssr: false }
+)
+
+
 const Chart5 = dynamic(() => import('./chart5'),
 { ssr: false }
 )
@@ -92,7 +97,7 @@ export default function Home() {
             <h1>Tempo de atendimento por ticket</h1>
             </div>
             <div>
-        
+              <Chart4 />
             </div>
           </div>
           <div className={styles.chartBg}>

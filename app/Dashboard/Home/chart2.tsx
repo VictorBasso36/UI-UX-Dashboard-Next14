@@ -16,8 +16,9 @@ export default function Chart2() {
    
               chart: {
                 type: 'polarArea',
-                width: 250,
-            
+                width: '100%',
+                height: 400
+                
               },
               stroke: {
                 colors: ['#fff']
@@ -34,6 +35,7 @@ export default function Chart2() {
                 },
               },
               legend: {
+                position: 'bottom',
                 horizontalAlign: 'center', 
                 fontSize: '15pt',
                 fontFamily: 'var(--Public_Sans)!important',
@@ -53,11 +55,12 @@ export default function Chart2() {
                   offsetY: 0
                 },
               },
+              
               responsive: [{
                 breakpoint: 700,
                 options: {
                   chart: {
-                    width: 250
+                    width: '100%',
                   },
                   legend: {
                     horizontalAlign: 'center', 
@@ -76,7 +79,20 @@ export default function Chart2() {
                     position: 'bottom'
                   }
                 }
-              }]
+              }, 
+              {
+                breakpoint: 1024,
+                options: {
+                  chart: {
+                    width: '100%',
+                  },
+                  legend: {
+                    
+                    position: 'bottom'
+                  }
+                }
+              }
+              ]
         
           
   };
@@ -89,7 +105,7 @@ export default function Chart2() {
       options={options}
       series={options.series}
       type="polarArea"
-      height={250}
+      height={330}
     />
     )
 }
