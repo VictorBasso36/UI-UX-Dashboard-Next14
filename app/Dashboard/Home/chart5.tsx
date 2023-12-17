@@ -15,7 +15,7 @@ export default function Chart5() {
     series: [44, 55, 41, 17, 15],
     chart: {
       type: 'donut',
-      width: '90%'
+      width: '100%'
     },
     legend: {
       position: 'bottom'
@@ -24,7 +24,7 @@ export default function Chart5() {
       breakpoint: 480,
       options: {
         chart: {
-          width: '90%'
+          width: '100%'
         },
         legend: {
           position: 'bottom'
