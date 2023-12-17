@@ -58,9 +58,14 @@
 
     .chartHere{
         display: flex;
-
+        max-width: unset;
         width: 100%;
         align-items: center;
         justify-content: center;
+    }
+
+    
+    .grid{
+        width: 100%;
     }
 }

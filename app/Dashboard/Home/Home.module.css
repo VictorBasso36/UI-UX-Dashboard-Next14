@@ -31,6 +31,7 @@
 
 .ChartsHere{
     display: grid;
+    max-width: var(--max-width);
     grid-template-columns: 1fr;
     grid-template-rows: repeat(4, 1fr);
     grid-column-gap: 0px;
@@ -41,7 +42,7 @@
     background-color: var(--mainBackgroundColor);
     box-shadow: var(--mainBoxShadown);
     height: auto;
-    min-height: 500px;
+    min-height: 450px;
     border-radius: var(--border-radius);
 }
 
@@ -53,6 +54,8 @@
 
 .grid1{
     display: grid;
+    max-width: var(--max-width);
+    width: 100%;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr;
     grid-column-gap: 30px;
@@ -73,6 +76,8 @@
     grid-template-rows: 1fr;
     grid-column-gap: 30px;
     grid-row-gap: 30px;
+    max-width: var(--max-width);
+    width: 100%;
     margin-bottom: 30px;
 }
 
@@ -92,6 +97,8 @@
 }
 
 .grid3{
+    max-width: var(--max-width);
+    width: 100%;
     display: grid;
     grid-template-columns: 1.4fr 1fr;
     grid-template-rows: 1fr;
@@ -103,16 +110,29 @@
 
 .grid4{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     grid-template-rows: 1fr;
-    grid-column-gap: 30px;
+    grid-column-gap: 0px;
     grid-row-gap: 30px;
-    margin-bottom: 30px;
+    max-width: var(--max-width);
+    width: 100%;
+
+}
+
+.containarChart5{
+    height: 300px;
+}
+
+.divend{
+    width: 100%;
+}
+
+@media screen and (min-width: 700px) and (max-width: 1200px){
+
 }
 
 
-
-@media screen and (max-width: 1150px){
+@media screen and (max-width: 700px){
     .startDate{
         margin-right: 0px;
         margin-bottom: 20px;
@@ -196,6 +216,7 @@
         grid-template-rows: unset;
         grid-column-gap: unset;
         grid-row-gap: unset;
+        margin-top: 30px;
         margin-bottom: 30px;
     }
 

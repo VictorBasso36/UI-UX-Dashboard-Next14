@@ -20,6 +20,20 @@ const Chart3 = dynamic(() => import('./chart3'),
 { ssr: false }
 )
 
+const Chart5 = dynamic(() => import('./chart5'),
+{ ssr: false }
+)
+
+
+const Chart6 = dynamic(() => import('./chart6'),
+{ ssr: false }
+)
+
+
+const Chart7 = dynamic(() => import('./chart7'),
+{ ssr: false }
+)
+
 export default function Home() {
 
   const {setStart, start, end, setEnd, } = DashboardContext()
@@ -83,11 +97,11 @@ export default function Home() {
           </div>
           <div className={styles.chartBg}>
             <div className={styles.cotainerTitle}> 
-            <h1>Painel de Tickets</h1>
-              <p>Veja os tickets e seus status</p>
+              <h1 style={{textAlign: 'center'}}>Painel de Tickets</h1>
+              <p style={{textAlign: 'center'}}>Veja os tickets e seus status</p>
             </div>
-            <div>
-    
+            <div className={styles.containarChart5}>
+              <Chart5 />
             </div>
           </div>
         </div>
@@ -96,16 +110,18 @@ export default function Home() {
             <div className={styles.cotainerTitle}> 
             <h1>Tickets por analista</h1>
             </div>
-            <div>
-           
+            <div className={styles.divend}>
+              <Chart6 />
             </div>
           </div>
+        </div>
+        <div className={styles.grid4} style={{marginTop: '30px', marginBottom: '30px'}}>
           <div className={styles.chartBg}>
             <div className={styles.cotainerTitle}> 
             <h1>Tickets por analista</h1>
             </div>
-            <div>
-      
+            <div className={styles.divend}>
+              <Chart7 />
             </div>
           </div>
         </div>

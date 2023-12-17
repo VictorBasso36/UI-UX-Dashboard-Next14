@@ -16,6 +16,8 @@ export default function Chart2() {
    
               chart: {
                 type: 'polarArea',
+                width: 250,
+            
               },
               stroke: {
                 colors: ['#fff']
@@ -52,10 +54,10 @@ export default function Chart2() {
                 },
               },
               responsive: [{
-                breakpoint: 480,
+                breakpoint: 700,
                 options: {
                   chart: {
-                    width: 200
+                    width: 250
                   },
                   legend: {
                     horizontalAlign: 'center', 
@@ -87,7 +89,7 @@ export default function Chart2() {
       options={options}
       series={options.series}
       type="polarArea"
-      height={350}
+      height={250}
     />
     )
 }
