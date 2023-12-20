@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: 'Dashboard Taxi Digital - A evolução do táxi.',
   description: 'Dashboard Taxi Digital - A evolução do táxi.',
   icons: {
-    icon: '/Logo.svg',
+    icon: '/unnamed.png',
   },
 }
 

@@ -1,9 +1,7 @@
 "use client"
-import { useRouter } from 'next/router'
+import axios from 'axios';
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react'
-import { useSearchParams } from 'next/navigation'
 import dayjs from 'dayjs';
-
 
 interface OpenProviderProps {
   children: ReactNode;
@@ -36,7 +34,6 @@ const OpenContext = createContext<OpenContextType>({
 })
 
 export function DashboardProvider({ children }: OpenProviderProps) {
-
     //NavigationProvider
     const [open, setOpen] = useState<boolean>(true)
     //SearchBarProvider
@@ -44,8 +41,47 @@ export function DashboardProvider({ children }: OpenProviderProps) {
     
     //HomeEndDate and HomeStartDate
     const [start, setStart] = useState<Date | null>(dayjs().subtract(30, 'days').toDate());
+   
     const [end, setEnd] = useState<Date | null>(dayjs().toDate());
-    console.log(end, start)
+    const [dataCharts, setDataCharts] = useState()
+    console.log(dataCharts)
+
+    async function postRequest() {
+        const url = 'https://tdbi.taxidigital.net/';
+        const token = '8c4EF9vXi8TZe6581e0af85c25';
+        const dtInicio = dayjs(start).format('DD/MM/YYYY');
+        const dtFinal = dayjs(end).format('DD/MM/YYYY');
+        const dsTipos = ['Chamados_Telefone', 'Chamados_Cliente', 'Chamados_Whatsapp', 'Reinicializacao_Servidor'];
+    
+        for (const dsTipo of dsTipos) {
+            const data = {
+                token: token,
+                dtInicio: dtInicio,
+                dtFinal: dtFinal,
+                dsTipo: dsTipo
+            };
+    
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json',
+          
+                }
+            };
+    
+            try {
+                const response = await axios.post(url, data, config);
+                setDataCharts(response?.data);
+                console.log(`Status: ${response.status}`);
+                console.log('Body: ', response.data);
+            } catch (err) {
+                console.error(err);
+            }
+        }
+    }
+    useEffect(() => {
+        postRequest();
+    }, []);
+
     return (
         <OpenContext.Provider 
         value={{ open, setOpen, setOpenSearch, openSearch, end, setEnd, setStart, start }}
@@ -54,7 +90,6 @@ export function DashboardProvider({ children }: OpenProviderProps) {
         </OpenContext.Provider>
     )
 }
-
 
 export function DashboardContext() {
     const context = useContext(OpenContext)
