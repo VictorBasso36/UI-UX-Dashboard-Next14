@@ -62,17 +62,20 @@ export function DashboardProvider({ children }: OpenProviderProps) {
             };
     
             const config = {
+                method: 'POST',
                 headers: {
+                    'Access-Control-Allow-Origin': '*',
                     'Content-Type': 'application/json',
-          
-                }
+                },
+                body: JSON.stringify(data)
             };
     
             try {
-                const response = await axios.post(url, data, config);
-                setDataCharts(response?.data);
+                const response = await fetch(url, config);
+                const responseData = await response.json();
+                setDataCharts(responseData);
                 console.log(`Status: ${response.status}`);
-                console.log('Body: ', response.data);
+                console.log('Body: ', responseData);
             } catch (err) {
                 console.error(err);
             }
@@ -80,7 +83,7 @@ export function DashboardProvider({ children }: OpenProviderProps) {
     }
     useEffect(() => {
         postRequest();
-    }, []);
+    }, [start, end]);
 
     return (
         <OpenContext.Provider 
