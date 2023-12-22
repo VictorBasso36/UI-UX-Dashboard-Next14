@@ -1,4 +1,5 @@
 "use client"
+import axios from 'axios';
 import { DashboardContext } from '../layoutProvider';
 import styles from './Home.module.css'
 import { DatePicker, DatePickerProps, Space } from 'antd';
@@ -40,16 +41,17 @@ const Chart7 = dynamic(() => import('./chart7'),
 )
 
 export default function Home() {
-
   const {setStart, start, end, setEnd, } = DashboardContext()
   const onChangeStart: DatePickerProps['onChange'] = (date, dateString) => {
     setStart(dayjs(dateString).toDate());
-    console.log(dayjs(dateString).toDate())
+
   };
   const onChangeEnd: DatePickerProps['onChange'] = (date, dateString) => {
     setEnd(dayjs(dateString).toDate());
-    console.log(dayjs(dateString).toDate())
+
   };
+
+  const { loading } = DashboardContext();
   return (
     <section className={styles.main}>
       <div className={styles.DataFilter}>

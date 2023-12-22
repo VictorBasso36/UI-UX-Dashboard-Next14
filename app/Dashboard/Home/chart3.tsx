@@ -187,9 +187,6 @@ export default function Chart3() {
             toolbar: {
               show: false
             },
-            
-            width: '100%',
-            height: '300px',
             type: 'bar',
           },
           plotOptions: {
@@ -288,11 +285,7 @@ export default function Chart3() {
     }
   
   
-  
-      
-    
-   
-    const isMobile = window.innerWidth < 550;
+   const isMobile = window.innerWidth < 550;
   return ( 
   
     <div style={isMobile ? {} : { width: '100%', marginLeft: '20px', marginRight: '20px' }}>

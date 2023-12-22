@@ -3,7 +3,9 @@ import React, { useContext } from 'react';
 import { DashboardContext } from '../layoutProvider';
 import styles from './chart1.module.css';
 import dayjs from 'dayjs';
+import loadingStyle from './loading.module.css'
 import { Line, Pie, PieConfig } from '@ant-design/charts';
+import { Skeleton } from 'antd';
 // import {
 //   Chart as ChartJS,
 //   CategoryScale,
@@ -25,7 +27,9 @@ import { Line, Pie, PieConfig } from '@ant-design/charts';
 // );
 
 export default function Chart1() {
-  const { start, end } = DashboardContext();
+  const { dataCharts, loading } = DashboardContext();
+  if(loading) return ''
+  const reinicializacaoServidor = dataCharts?.Chamados_Telefone || [];
   const windowWidth = window.innerWidth;
   const chartSize = windowWidth < 600 ? 180 : 250;
   const data = [

@@ -10,17 +10,29 @@ export default function Navigation() {
   const searchParams = usePathname()
   const {open, setOpen} = DashboardContext()
 
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
 
-
-  useEffect(()=>{
+  useEffect(() => {
     if (typeof window !== 'undefined') {
-      let width = window.innerWidth;
-      if(width < 1150){
-        setOpen(false);
-      }
-    }
-  },[])
+      setWindowWidth(window.innerWidth);
 
+      const handleResize = () => {
+        setWindowWidth(window.innerWidth);
+      };
+
+      window.addEventListener('resize', handleResize);
+
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }
+  }, []);
+
+  useEffect(() => {
+    if (windowWidth < 1150) {
+      setOpen(false);
+    }
+  }, [windowWidth]);
   return (
     <main className={styles.main} style={{marginLeft: open ? '0px' : '-260px'}}>
       <div className={styles.contentItem}>
@@ -28,7 +40,7 @@ export default function Navigation() {
           {icons[0]}
         </div>
         <div className={styles.headerNavbar}>
-            <Link href="/Dashboard/Home">
+            <Link href="/">
                 <Image className={styles.mainLogo} src="/taxidigital.png" width={220} height={50} alt={''}></Image>
             </Link>
         </div>
