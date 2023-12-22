@@ -44,12 +44,14 @@ export default function Home() {
   const {setStart, start, end, setEnd, } = DashboardContext()
   const onChangeStart: DatePickerProps['onChange'] = (date, dateString) => {
     setStart(dayjs(dateString).toDate());
-    console.log(dayjs(dateString).toDate())
+
   };
   const onChangeEnd: DatePickerProps['onChange'] = (date, dateString) => {
     setEnd(dayjs(dateString).toDate());
-    console.log(dayjs(dateString).toDate())
+
   };
+
+  const { loading } = DashboardContext();
   return (
     <section className={styles.main}>
       <div className={styles.DataFilter}>

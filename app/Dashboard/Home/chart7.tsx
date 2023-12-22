@@ -32,22 +32,31 @@ import { withTheme } from '@emotion/react';
 export default function Chart7() {
   const { start, end } = DashboardContext();
   const annotations = [];
+  const { dataCharts, loading } = DashboardContext();
+  if(loading) return ''
+  const ticket = dataCharts?.ticket || [];
+  console.log(ticket)
+  // Assuming 'data' is the array of objects from your API
+  const categories = ticket.map(item => item.dsAtendimento);
+  const abertos = ticket.map(item => item.nrAbertos);
+  const fechados = ticket.map(item => item.nrFechados);
+  const pendentes = ticket.map(item => item.nrPendentes);
 
   const options: ApexOptions = {
 
         
     series: [{
-        name: 'Abertos',
-        data: [44, 55, 57]
-      }, 
-      {
-        name: 'Fechados',
-        data: [76, 85, 101]
-      }, 
-      {
-        name: 'Pendentes',
-        data: [35, 41, 36]
-      }],
+      name: 'Abertos',
+      data: abertos
+    }, 
+    {
+      name: 'Fechados',
+      data: fechados
+    }, 
+    {
+      name: 'Pendentes',
+      data: pendentes
+    }],
       grid: {
         show: true,
         strokeDashArray: 10
@@ -89,7 +98,7 @@ export default function Chart7() {
       colors:['#7367f0', '#28c76f', '#ff9f43', '#00cfe8', '#5d596c'],
       xaxis: {
         
-        categories: ["Iago", "Leo", "Gui"],
+        categories: categories,
         position: 'left',
         axisBorder: {
           show: true

@@ -30,32 +30,43 @@ import { withTheme } from '@emotion/react';
 // );
 
 export default function Chart6() {
-  const { start, end } = DashboardContext();
-  const annotations = [];
+  const { dataCharts, loading } = DashboardContext();
+  if(loading) return ''
+  const ticketresumo = dataCharts?.ticketresumo || [];
+  // Assuming 'data' is the array of objects from your API
+  const categories = ticketresumo.map(item => item.dsAtendimento);
+  const naoAtribuido = ticketresumo.map(item => item.dsNaoAtribuido);
+  const semResolucao = ticketresumo.map(item => item.dsSemResolucao);
+  const atualizado = ticketresumo.map(item => item.dsAtualizado);
+  const pendente = ticketresumo.map(item => item.dsPendente);
+  const resolvido = ticketresumo.map(item => item.dsResolvido);
+
 
   const options: ApexOptions = {
 
         
-    series: [{
+    series: [
+      {
         name: 'N Atribuido',
-        data: [44, 55, 57]
+        data: naoAtribuido
       }, 
       {
         name: 'S Resolução',
-        data: [76, 85, 101]
+        data: semResolucao
       }, 
       {
         name: 'Att Recentemente',
-        data: [35, 41, 36]
+        data: atualizado
       }, 
       {
         name: 'Pendentes',
-        data: [35, 41, 36]
+        data: pendente
       },
-       {
+      {
         name: 'Resolvido',
-        data: [35, 41, 36]
-      }],
+        data: resolvido
+      }
+    ],
       grid: {
         show: true,
         strokeDashArray: 10
@@ -97,7 +108,7 @@ export default function Chart6() {
       colors:['#7367f0', '#28c76f', '#ff9f43', '#00cfe8', '#5d596c'],
       xaxis: {
         
-        categories: ["Iago", "Leo", "Gui"],
+        categories: categories,
         position: 'left',
         axisBorder: {
           show: true

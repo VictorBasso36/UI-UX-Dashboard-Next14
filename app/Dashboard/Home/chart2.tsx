@@ -2,18 +2,27 @@
 import React, { useContext } from 'react';
 import { DashboardContext } from '../layoutProvider';
 import styles from './Home.module.css';
+import { DotChartOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
 import ReactApexChart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 import { Line } from '@ant-design/charts';
 import dynamic from 'next/dynamic';
+import { Skeleton } from 'antd';
 
 
 export default function Chart2() {
-  const { start, end } = DashboardContext();
+  const { dataCharts, loading } = DashboardContext();
+  if(loading) return ''
+  const reinicializacaoServidor = dataCharts?.Reinicializacao_Servidor || [];
+  const labels = reinicializacaoServidor
+    .map(item => item.dsDescricao)
+    .filter((item): item is string => item !== null);
+  
+  const series = reinicializacaoServidor.map(item => item.nrQtde);
   const options: ApexOptions = {
-              series: [14, 23, 21, 17, 15, 10, 12, 17, 21],
-   
+              series: series,
+              labels: labels,
               chart: {
                 type: 'polarArea',
                 width: '100%',

@@ -7,6 +7,41 @@ interface OpenProviderProps {
   children: ReactNode;
 }
 
+interface Dados {
+    dsDescricao: string | null;
+    dsTipo: string;
+    dtOperacao: string;
+    nrQtde: number;
+}
+
+interface DadosTicket{
+    dsAtendimento: string;
+    dtOperacao: string;
+    nrAbertos: number;
+    nrFechados: number;
+    nrPendentes: number;
+}
+
+interface DadosResumoTicket{
+    dsAtendimento: string,
+    dsAtualizado: number,
+    dsNaoAtribuido: number,
+    dsPendente: number,
+    dsResolvido: number,
+    dsSemResolucao: number,
+    dtOperacao: string
+}
+
+interface DadosChamados {
+    Chamados_Telefone: Dados[];
+    Chamados_Cliente: Dados[];
+    Chamados_Whatsapp: Dados[];
+    Reinicializacao_Servidor: Dados[];
+    ticket: DadosTicket[];
+    ticketresumo: DadosResumoTicket[];
+}
+
+
 interface OpenContextType {
     open: boolean;
     setOpen: (value: boolean) => void;
@@ -18,6 +53,9 @@ interface OpenContextType {
     setStart: (value: Date) => void,
     end: Date | null,
     setEnd: (value: Date) => void,
+
+    loading: boolean,
+    dataCharts: DadosChamados | null
 }
   
 const OpenContext = createContext<OpenContextType>({
@@ -31,7 +69,12 @@ const OpenContext = createContext<OpenContextType>({
     setStart: () => {},
     end: dayjs().toDate(),
     setEnd: () => {},
+
+    loading: false,
+    dataCharts: null
 })
+
+
 
 export function DashboardProvider({ children }: OpenProviderProps) {
     //NavigationProvider
@@ -40,24 +83,26 @@ export function DashboardProvider({ children }: OpenProviderProps) {
     const[openSearch, setOpenSearch] = useState<boolean>(false)
     
     //HomeEndDate and HomeStartDate
-    const [start, setStart] = useState<Date | null>(dayjs().subtract(30, 'days').toDate());
-   
+    const [start, setStart] = useState<Date | null>(dayjs().subtract(45, 'days').toDate());
     const [end, setEnd] = useState<Date | null>(dayjs().toDate());
-    const [dataCharts, setDataCharts] = useState()
-    console.log(dataCharts)
+
+    //goData Charts 
+    const [dataCharts, setDataCharts] = useState<DadosChamados | null>(null)
+    const [loading, setLoading] = useState<boolean>(false) //statusLoading
 
     async function postRequest() {
-        const url = 'https://tdbi.taxidigital.net/';
+        setLoading(true);
+        
+        const url = '/Dashboard/Home/pages/api/homeData';
         const token = '8c4EF9vXi8TZe6581e0af85c25';
-        const dtInicio = dayjs(start).format('DD/MM/YYYY');
-        const dtFinal = dayjs(end).format('DD/MM/YYYY');
-        const dsTipos = ['Chamados_Telefone', 'Chamados_Cliente', 'Chamados_Whatsapp', 'Reinicializacao_Servidor'];
+
+        const dsTipos = ['Chamados_Telefone', 'Chamados_Cliente', 'Chamados_Whatsapp', 'Reinicializacao_Servidor', 'ticketresumo', 'ticket'];
     
         for (const dsTipo of dsTipos) {
             const data = {
                 token: token,
-                dtInicio: dtInicio,
-                dtFinal: dtFinal,
+                dtInicio:  dayjs(start).format('DD/MM/YYYY'),
+                dtFinal: dayjs(end).format('DD/MM/YYYY'),
                 dsTipo: dsTipo
             };
     
@@ -73,21 +118,23 @@ export function DashboardProvider({ children }: OpenProviderProps) {
             try {
                 const response = await fetch(url, config);
                 const responseData = await response.json();
-                setDataCharts(responseData);
-                console.log(`Status: ${response.status}`);
-                console.log('Body: ', responseData);
+                setDataCharts((prevDataCharts: any) => ({...prevDataCharts, [dsTipo]: responseData}));
+
             } catch (err) {
                 console.error(err);
             }
+
+            setLoading(false);
         }
     }
     useEffect(() => {
         postRequest();
+        console.log(start, end)
     }, [start, end]);
 
     return (
         <OpenContext.Provider 
-        value={{ open, setOpen, setOpenSearch, openSearch, end, setEnd, setStart, start }}
+        value={{ open, setOpen, setOpenSearch, openSearch, end, setEnd, setStart, start, loading, dataCharts }}
         >
         {children}
         </OpenContext.Provider>
