@@ -4,7 +4,7 @@ import Link from 'next/link'
 export default function Footer() {
   return (
     <footer className={styles.main}>
-        <p>© 2023, Feito por <span><Link href="google.com">Felipe Henrique Design</Link></span></p> 
+        <p>© 2023, Feito por <span><Link target='_blank' href="https://felipehdesign.com.br/felipehdesign.com.br">Felipe Henrique Design</Link></span></p> 
     </footer>
   )
 }
