@@ -14,8 +14,8 @@ export default function Chart1() {
   const sumChamados_Whatsapp = Chamados_Whatsapp.reduce((total, chamado) => total + chamado.nrQtde, 0);
   const sumChamados_Telefone = Chamados_Telefone.reduce((total, chamado) => total + chamado.nrQtde, 0);
   
-  console.log(`Total de Chamados_Whatsapp: ${sumChamados_Whatsapp}`);
-  console.log(`Total de Chamados_Telefone: ${sumChamados_Telefone}`);
+  // console.log(`Total de Chamados_Whatsapp: ${sumChamados_Whatsapp}`);
+  // console.log(`Total de Chamados_Telefone: ${sumChamados_Telefone}`);
 
   const totalChamados = sumChamados_Telefone | 0 + sumChamados_Whatsapp | 0;
 
