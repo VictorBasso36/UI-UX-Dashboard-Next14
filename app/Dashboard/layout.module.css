@@ -34,4 +34,11 @@
         grid-column-gap: 0px;
         grid-row-gap: 0px;
     }
+
+    .contentContainer{
+        width: 100%;
+        margin-left: 5px;
+        margin-right: 5px;
+        max-width: var(--max-width);
+    }
 }

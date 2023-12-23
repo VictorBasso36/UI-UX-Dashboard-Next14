@@ -30,12 +30,9 @@ import { withTheme } from '@emotion/react';
 // );
 
 export default function Chart7() {
-  const { start, end } = DashboardContext();
-  const annotations = [];
   const { dataCharts, loading } = DashboardContext();
   if(loading) return ''
   const ticket = dataCharts?.ticket || [];
-  console.log(ticket)
   // Assuming 'data' is the array of objects from your API
   const categories = ticket.map(item => item.dsAtendimento);
   const abertos = ticket.map(item => item.nrAbertos);

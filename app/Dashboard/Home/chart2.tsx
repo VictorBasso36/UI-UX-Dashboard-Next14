@@ -24,7 +24,7 @@ export default function Chart2() {
               series: series,
               labels: labels,
               chart: {
-                type: 'polarArea',
+                type: 'pie',
                 width: '100%',
                 height: 400
                 
@@ -113,7 +113,7 @@ export default function Chart2() {
       <ReactApexChart
       options={options}
       series={options.series}
-      type="polarArea"
+      type="pie"
       height={330}
     />
     )

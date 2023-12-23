@@ -1,7 +1,8 @@
 "use client"
 import axios from 'axios';
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react'
+import { createContext, useContext, useEffect, useState, ReactNode, useCallback } from 'react'
 import dayjs from 'dayjs';
+import { useSearchParams } from 'next/navigation';
 
 interface OpenProviderProps {
   children: ReactNode;
@@ -79,6 +80,7 @@ const OpenContext = createContext<OpenContextType>({
 export function DashboardProvider({ children }: OpenProviderProps) {
     //NavigationProvider
     const [open, setOpen] = useState<boolean>(true)
+
     //SearchBarProvider
     const[openSearch, setOpenSearch] = useState<boolean>(false)
     
@@ -89,8 +91,9 @@ export function DashboardProvider({ children }: OpenProviderProps) {
     //goData Charts 
     const [dataCharts, setDataCharts] = useState<DadosChamados | null>(null)
     const [loading, setLoading] = useState<boolean>(false) //statusLoading
-
+    const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
     async function postRequest() {
+        await sleep(300);
         setLoading(true);
         
         const url = '/Dashboard/Home/pages/api/homeData';
@@ -129,7 +132,6 @@ export function DashboardProvider({ children }: OpenProviderProps) {
     }
     useEffect(() => {
         postRequest();
-        console.log(start, end)
     }, [start, end]);
 
     return (

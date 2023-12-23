@@ -25,6 +25,7 @@
 
 .HambMenu{
     display: none;
+    cursor: pointer;
     height: 100%;
     align-items: center;
     justify-content: center;
