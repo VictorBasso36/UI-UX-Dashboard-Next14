@@ -23,7 +23,7 @@
 .chartHere{
     display: flex;
     width: 100%;
-    max-width: 250px;
+    max-width: 350px;
     align-items: center;
     justify-content: center;
 }
@@ -47,8 +47,8 @@
 
 .Icon svg{
     color: white;
-    height: 80%;
-    width: 80%;
+    height: 60%;
+    width: 60%;
 }
 
 @media screen and (min-width:0px) and (max-width: 950px){

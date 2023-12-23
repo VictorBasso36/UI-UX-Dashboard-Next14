@@ -30,49 +30,21 @@ import { withTheme } from '@emotion/react';
 // );
 
 export default function Chart3() {
-  const { start, end } = DashboardContext();
-  const annotations = [];
-  const data = [
-    {
-      type: 'Ligue taxi-1',
-      sales: 38,
-    },
-    {
-      type: 'Ligue taxi-2',
-      sales: 52,
-    },
-    {
-      type: 'Ligue taxi-3',
-      sales: 61,
-    },
-    {
-      type: 'Ligue taxi-4',
-      sales: 145,
-    },
-    {
-      type: 'Ligue taxi-5',
-      sales: 48,
-    },
-    {
-      type: 'Ligue taxi-6',
-      sales: 38,
-    },
-    {
-      type: 'Ligue taxi-7',
-      sales: 38,
-    },
-    {
-      type: 'Ligue taxi-8',
-      sales: 38,
-    },
-  ];
+  const { dataCharts, loading } = DashboardContext();
+  if(loading) return ''
+  const Chamados_Cliente = dataCharts?.Chamados_Cliente || [];
+  const chartData = Chamados_Cliente.map((item) => ({
+    type: item.dsDescricao,
+    sales: item.nrQtde,
+  }));  
+
 
   const options: ApexOptions = {
 
         
       series: [{
         name: 'Chamados por cliente',
-        data: [2, 3, 4, 10, 4, 33, 3, 2, 1, 3, 20, 10]
+        data: chartData.map((item) => item.sales),
       }],
       grid: {
         show: false
@@ -99,8 +71,14 @@ export default function Chart3() {
       
       dataLabels: {
         enabled: true,
-        formatter: function (val) {
-          return val + "k";
+        formatter: function (val: number) {
+          if (val < 1000) {
+              return val + ''; // Return the number as is if it's less than 1000
+          } else if (val < 100000) {
+              return (val / 1000).toFixed(1) + "k"; // Convert to 'k' format and keep 1 decimal place if it's less than 100000
+          } else {
+              return (val / 1000) + 'k'; // Convert to ''k'' format if it's greater than or equal to 100000
+          }
         },
         offsetY: -30,
         style: {
@@ -114,7 +92,7 @@ export default function Chart3() {
       colors:['#7367f0'],
       xaxis: {
         
-        categories: ["Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi"],
+        categories: chartData.map((item) => item.type),
         position: 'left',
         axisBorder: {
           show: true
@@ -162,7 +140,13 @@ export default function Chart3() {
           },
           show: true,
           formatter: function (val) {
-            return val + "k";
+            if (val < 1000) {
+                return val + ''; // Return the number as is if it's less than 1000
+            } else if (val < 100000) {
+                return (val / 1000).toFixed(1) + ""; // Convert to 'k' format and keep 1 decimal place if it's less than 100000
+            } else {
+                return (val / 1000) + ''; // Convert to ''k'' format if it's greater than or equal to 100000
+            }
           }
         }
       
@@ -184,6 +168,8 @@ export default function Chart3() {
             show: false
           },
           chart: {
+            width: '100%',
+            height: '300px',
             toolbar: {
               show: false
             },
@@ -202,8 +188,14 @@ export default function Chart3() {
           
           dataLabels: {
             enabled: true,
-            formatter: function (val: string) {
-              return val + "k";
+            formatter: function (val: number) {
+              if (val < 1000) {
+                  return val + ''; // Return the number as is if it's less than 1000
+              } else if (val < 100000) {
+                  return (val / 1000).toFixed(1) + "k"; // Convert to 'k' format and keep 1 decimal place if it's less than 100000
+              } else {
+                  return (val / 1000) + "k"; // Convert to 'k' format if it's greater than or equal to 100000
+              }
             },
             offsetY: -30,
             style: {
@@ -217,8 +209,7 @@ export default function Chart3() {
           colors:['#7367f0'],
           xaxis: {
             
-            categories: ["Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi", "Ligue taxi"],
-            position: 'left',
+             position: 'left',
             axisBorder: {
               show: true
             },
@@ -264,8 +255,14 @@ export default function Chart3() {
                 colors: ["#5d596c"]
               },
               show: true,
-              formatter: function (val: string) {
-                return val + "k";
+              formatter: function (val: number) {
+                if (val < 1000) {
+                    return val + ''; // Return the number as is if it's less than 1000
+                } else if (val < 100000) {
+                    return (val / 1000).toFixed(1) + "k"; // Convert to 'k' format and keep 1 decimal place if it's less than 100000
+                } else {
+                    return (val / 1000) + "k"; // Convert to 'k' format if it's greater than or equal to 100000
+                }
               }
             }
           
@@ -286,16 +283,14 @@ export default function Chart3() {
   
   
    const isMobile = window.innerWidth < 550;
-  return ( 
+  return <ReactApexChart
+        style={{width:'100%'}}
+        options={options}
+        series={options.series}
+        type="bar"
+        height={350}
+      />
+
   
-    <div style={isMobile ? {} : { width: '100%', marginLeft: '20px', marginRight: '20px' }}>
-    <ReactApexChart
-      options={options}
-      series={options.series}
-      type="bar"
-      height={350}
-    />
-  </div>
-  )
   
 }

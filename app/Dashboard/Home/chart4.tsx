@@ -32,7 +32,9 @@ import { withTheme } from '@emotion/react';
 export default function Chart4() {
   const { start, end } = DashboardContext();
   const annotations = [];
-
+  const { dataCharts, loading } = DashboardContext();
+  if(loading) return ''
+  const ticket = dataCharts?.ticket || [];
   const options: ApexOptions = {
 
     series: [{
