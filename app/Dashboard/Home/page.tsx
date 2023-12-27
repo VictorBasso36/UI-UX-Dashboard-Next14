@@ -2,13 +2,12 @@
 import axios from 'axios';
 import { DashboardContext } from '../layoutProvider';
 import styles from './Home.module.css'
-import { DatePicker, DatePickerProps, Space } from 'antd';
-const { RangePicker } = DatePicker;
+import { DatePicker, DatePickerProps, } from 'antd';
 import dayjs from 'dayjs';
-import ptBR from 'antd/lib/locale/pt_BR'
-import dynamic from 'next/dynamic'
-import { useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import 'dayjs/locale/pt';
+dayjs.locale('pt');
+import ptBR from 'antd/lib/locale/pt_BR';
+import dynamic from 'next/dynamic';
 
 const Chart1 = dynamic(
   () => import('./chart1'),
@@ -47,10 +46,15 @@ export default function Home() {
 
 
   const onChangeStart: DatePickerProps['onChange'] = (date, dateString) => {
-    setStart(dayjs(dateString).toDate());
+    if (date && dateString) {
+      setStart(date.toDate());
+    }
   };
+  
   const onChangeEnd: DatePickerProps['onChange'] = (date, dateString) => {
-    setEnd(dayjs(dateString).toDate());
+    if (date && dateString) {
+      setEnd(date.toDate());
+    }
   };
 
   const { loading } = DashboardContext();
@@ -58,15 +62,31 @@ export default function Home() {
     <section className={styles.main}>
       <div className={styles.DataFilter}>
 
-          <DatePicker allowClear={false} className={styles.startDate} value={dayjs(start)} onChange={onChangeStart} placeholder='Data inicial' />
-          <DatePicker allowClear={false} className={styles.endDate} value={dayjs(end)} onChange={onChangeEnd} placeholder='Data final'/>
+      <DatePicker 
+            allowClear={false} 
+            format={'DD/MM/YYYY'} 
+            defaultValue={dayjs(start)} 
+            className={styles.startDate} 
+            value={dayjs(start)} 
+            onChange={onChangeStart} 
+            placeholder='Data inicial' 
+        />
+        <DatePicker 
+            allowClear={false} 
+            format={'DD/MM/YYYY'} 
+            defaultValue={dayjs(end)} 
+            className={styles.endDate} 
+            value={dayjs(end)} 
+            onChange={onChangeEnd} 
+            placeholder='Data final'
+        />
         
       </div>
       <div className={styles.ChartsHere}>
         <div className={styles.grid1}>
           <div className={styles.chartBg}>
             <div className={styles.cotainerTitle}> 
-            <h1>Atendimento por período</h1>
+            <h1>Atendimentos por período</h1>
               <p>Chamados Help Desk</p>
             </div>
             <div className={styles.chart1div}>
@@ -75,10 +95,10 @@ export default function Home() {
           </div>
           <div className={styles.chartBg}>
             <div className={styles.cotainerTitle}> 
-            <h1>Reinicialização de serviços</h1>
-              <p>Veja por quantidade</p>
+            <h1>Reinicialização de servidores</h1>
+              <p>&nbsp;</p>
             </div>
-            <div>
+            <div className={styles.chart1div}>
               <Chart2 />
             </div>
           </div>
@@ -87,7 +107,7 @@ export default function Home() {
           <div className={styles.chartBg}>
             <div className={styles.cotainerTitle}> 
             <h1>Chamados por cliente</h1>
-              <p>Você pode ver os chamados por cliente e por dia</p>
+              {/* <p>Você pode ver os chamados por cliente</p> */}
             </div>
             <div style={{width: '100%'}} className={styles.chart3div}>
               <Chart3 />

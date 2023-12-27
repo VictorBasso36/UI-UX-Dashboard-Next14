@@ -73,8 +73,8 @@ export default function Chart1() {
   <>
     <div className={styles.contentDiv}>
       <div className={styles.grid}>
-        <h2>{totalChamados}</h2>
-        <p>Total geral de atendimento</p>
+        <h2>{sumChamados_Telefone + sumChamados_Whatsapp}</h2>
+        <p>Total geral de atendimentos</p>
         <div className={styles.iconsHere}>
           <div className={styles.contentDataIcon}>
             <div className={styles.Icon} style={{backgroundColor: '#e9e7fd'}}>

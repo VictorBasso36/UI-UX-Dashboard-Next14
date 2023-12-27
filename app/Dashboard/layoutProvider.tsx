@@ -2,6 +2,8 @@
 import axios from 'axios';
 import { createContext, useContext, useEffect, useState, ReactNode, useCallback } from 'react'
 import dayjs from 'dayjs';
+import 'dayjs/locale/pt';
+dayjs.locale('pt');
 import { useSearchParams } from 'next/navigation';
 
 interface OpenProviderProps {
@@ -85,7 +87,7 @@ export function DashboardProvider({ children }: OpenProviderProps) {
     const[openSearch, setOpenSearch] = useState<boolean>(false)
     
     //HomeEndDate and HomeStartDate
-    const [start, setStart] = useState<Date | null>(dayjs().subtract(45, 'days').toDate());
+    const [start, setStart] = useState<Date | null>(dayjs().subtract(30, 'days').toDate());
     const [end, setEnd] = useState<Date | null>(dayjs().toDate());
 
     //goData Charts 
