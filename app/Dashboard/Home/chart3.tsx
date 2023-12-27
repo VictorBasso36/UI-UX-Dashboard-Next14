@@ -33,18 +33,27 @@ export default function Chart3() {
   const { dataCharts, loading } = DashboardContext();
   if(loading) return ''
   const Chamados_Cliente = dataCharts?.Chamados_Cliente || [];
-  const chartData = Chamados_Cliente.map((item) => ({
-    type: item.dsDescricao,
-    sales: item.nrQtde,
-  }));  
+  const chartData = Chamados_Cliente.reduce((acc: any, item: any) => {
+    const existingType = acc.find((i: { type: any; }) => i.type === item.dsDescricao);
+    if (existingType) {
+      existingType.sales += item.nrQtde;
+    } else {
+      acc.push({
+        type: item.dsDescricao,
+        sales: item.nrQtde,
+      });
+    }
+    return acc;
+  }, []);
+  
 
-
+  console.log("@@@@chart3:", chartData)
   const options: ApexOptions = {
 
         
       series: [{
         name: 'Chamados por cliente',
-        data: chartData.map((item) => item.sales),
+        data: chartData.map((item: { sales: any; }) => item.sales),
       }],
       grid: {
         show: false
@@ -92,7 +101,7 @@ export default function Chart3() {
       colors:['#7367f0'],
       xaxis: {
         
-        categories: chartData.map((item) => item.type),
+        categories: chartData.map((item: { type: any; }) => item.type),
         position: 'left',
         axisBorder: {
           show: true

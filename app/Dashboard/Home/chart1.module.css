@@ -3,6 +3,7 @@
     margin-right: 30px;
     margin-bottom: 30px;
     width: 100%;
+    overflow: hidden;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -11,6 +12,7 @@
 
 .grid{
     width: 45%;
+    max-width: 280px;
 }
 
 .grid h2{
@@ -28,6 +30,12 @@
     justify-content: center;
 }
 
+.iconsHere{
+    height: 140px;
+    width: 280px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
 
 .contentDataIcon{
     display: flex;

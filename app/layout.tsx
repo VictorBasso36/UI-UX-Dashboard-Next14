@@ -1,5 +1,9 @@
 import type { Metadata } from 'next'
 import { Public_Sans } from 'next/font/google'
+import dayjs from 'dayjs';
+import 'dayjs/locale/pt';
+dayjs.locale('pt');
+import ptBR from 'antd/lib/locale/pt_BR'
 import './globals.css'
 
 import { ConfigProvider } from 'antd'
@@ -30,6 +34,7 @@ export default function RootLayout({
           
         },
       }}
+      locale={ptBR}
     >
       <html lang="pt-br">
         <meta name="viewport" content="minimum-scale=1, initial-scale=1" />

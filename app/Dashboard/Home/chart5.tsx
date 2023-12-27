@@ -1,18 +1,26 @@
-"use client"
 import React from 'react';
 import { DashboardContext } from '../layoutProvider';
 import ReactApexChart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 
-
 export default function Chart5() {
   const { dataCharts, loading } = DashboardContext();
-  if(loading) return ''
-  const reinicializacaoServidor = dataCharts?.Reinicializacao_Servidor || [];
-  const labels = reinicializacaoServidor
-    .map(item => item.dsDescricao)
-    .filter((item): item is string => item !== null);
-  const series = reinicializacaoServidor.map(item => item.nrQtde);
+  if(loading) return '';
+  const ticketresumo = dataCharts?.ticketresumo || [];
+
+  // Assuming 'data' is the array of objects from your API
+  const labels = ['N Atribuido', 'S Resolução', 'Att Recentemente', 'Pendentes', 'Resolvido'];
+  const series = labels.map(label => {
+    return ticketresumo.reduce((total, item) => {
+      if (label === 'N Atribuido') return total + item.dsNaoAtribuido;
+      if (label === 'S Resolução') return total + item.dsSemResolucao;
+      if (label === 'Att Recentemente') return total + item.dsAtualizado;
+      if (label === 'Pendentes') return total + item.dsPendente;
+      if (label === 'Resolvido') return total + item.dsResolvido;
+      return total;
+    }, 0);
+  });
+
   const options: ApexOptions = {
     series: series,
     labels: labels,
@@ -24,6 +32,9 @@ export default function Chart5() {
       position: 'bottom',
       horizontalAlign: 'center', 
       fontSize: '15pt',
+      formatter: function(seriesName: any, opts: any) {
+        return `${opts.w.globals.series[opts.seriesIndex]} - ${seriesName}`;
+      },    
       fontFamily: 'var(--Public_Sans)!important',
       itemMargin: {
         horizontal: 20,
@@ -52,14 +63,14 @@ export default function Chart5() {
         }
       }
     }]
-         
   };
-    return (
-      <ReactApexChart
+
+  return (
+    <ReactApexChart
       options={options}
       series={options.series}
       type="donut"
       height={320}
     />
-    )
+  )
 }
