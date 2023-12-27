@@ -120,7 +120,7 @@ export default function Chart2() {
       <div className={styles.contentDiv}>
       <div className={styles.grid}>
         <h2>{totalGeral}</h2>
-        <p>Total geral de reinicialições </p>
+        <p>Total geral de reinicialização</p>
         <div className={styles.iconsHere}>
           {
             reducedItems.map((item, index) => {
